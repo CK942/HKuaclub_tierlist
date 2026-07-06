@@ -33,6 +33,24 @@
             transition: all 0.2s ease;
         }
     </style>
+    </style>
+        <style>
+        .right-watermark {
+            position: fixed;         /* 固定在螢幕上 */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;          /* 確保在最上層 */
+            pointer-events: none;    /* 讓點擊事件穿透 */
+            opacity: 0.2;           /* 透明度 */
+            
+            background-image: url('UATier0/image.png'); 
+            background-repeat: no-repeat; /* 不重複平鋪 */
+            background-position: right 20px bottom 20px; /* 關鍵：靠右 20px，靠下 20px */
+            background-size: 100px; /* 控制浮水印的大小 */
+        }
+    </style>
 </head>
 <body>
     <div class="max-w-3xl mx-auto px-4 sm:px-6 py-5">
