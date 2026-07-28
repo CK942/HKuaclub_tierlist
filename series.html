@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Union Arena 香港 - 全部系列</title>
+    <!-- 引入獨立 CSS 檔案（包含卡片外框、懸停效果與展開面板的樣式） -->
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入 Tailwind CSS (快速排版框架) 與 FontAwesome (提供關閉按鈕等圖標) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- 右下角浮水印圖層 -->
+    <div class="right-watermark"></div>
+
+    <!-- 選單導覽列 (Navbar) - 保持頂部固定 (sticky) -->
+    <nav class="bg-gray-900 text-white py-4 shadow-md sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 flex justify-between items-center">
+            <span class="font-bold text-lg text-red-500">UA CLUB</span>
+            <div class="flex gap-6">
+                <!-- 導覽連結：Tier List 主頁面與全部系列頁面 -->
+                <a href="index.html" class="font-semibold text-gray-300 hover:text-white transition pb-1">Tier List</a>
+                <a href="series.html" class="font-semibold text-red-500 border-b-2 border-red-500 pb-1">全部系列</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主內容容器 -->
+    <div class="max-w-9xl mx-auto px-4 sm:px-6 py-8">
+        
+        <!-- 頁面標題區 -->
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-extrabold text-gray-800 mb-2">全部系列</h1>
+            <p class="text-gray-500">點擊下方系列圖片，將於下方即時展開展示該系列的不同卡組</p>
+        </header>
+
+        <!-- 系列列表網格系統 (CSS Grid) -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5" id="series-grid">
+            <!-- JavaScript 會將系列卡片渲染至此 -->
+        </div>
+
+        <!-- 頁尾宣告 -->
+        <footer class="mt-16 py-8 text-center text-gray-500 border-t border-gray-200">
+            <p class="text-sm">版權所有人：U推 © 2026 All Rights Reserved</p>
+        </footer>
+    </div>
+
+    <!-- 前端互動 JavaScript 邏輯 -->
+    <script>
+        // 【所有系列清單資料庫】
+        const allSeriesList = [
+            { id: "series-1", folder: "UA_〈物語〉系列", name: "〈物語〉系列", desc: "", images: ["1", "2", "3", "4", "5", "6"] },
+            { id: "series-2", folder: "UA_《新世紀福音戰士新劇場版》", name: "《新世紀福音戰士新劇場版》", desc: "", images: ["1", "2", "3"] },
+            { id: "series-3", folder: "UA_『筋肉人』完美超人始祖篇", name: "『筋肉人』完美超人始祖篇", desc: "", images: ["1", "2", "3"] },
+            { id: "series-4", folder: "UA_2.5次元的誘惑", name: "2.5次元的誘惑", desc: "", images: ["1", "2", "3"] },
+            { id: "series-5", folder: "UA_BLEACH 死神 千年血戰篇", name: "BLEACH 死神 千年血戰篇", desc: "", images: ["1", "2-1", "2-2"] },
+            { id: "series-6", folder: "UA_BLUE LOCK 藍色監獄", name: "BLUE LOCK 藍色監獄", desc: "", images: ["1", "2", "3"] },
+            { id: "series-7", folder: "UA_Code Geass 反叛的魯路修", name: "Code Geass 反叛的魯路修", desc: "", images: ["1", "2", "3"] },
+            { id: "series-8", folder: "UA_CODE GEASS 奪回的Rozé", name: "CODE GEASS 奪回的Rozé", desc: "", images: ["1", "2", "3"] },
+            { id: "series-9", folder: "UA_Dr.STONE 新石紀", name: "Dr.STONE 新石紀", desc: "", images: ["1", "2", "3"] },
+            { id: "series-10", folder: "UA_HUNTER×HUNTER", name: "HUNTER×HUNTER", desc: "", images: ["1", "2", "3"] },
+            { id: "series-11", folder: "UA_NIKKE", name: "NIKKE", desc: "", images: ["1-1", "1-2", "2-1", "2-2", "3-1", "3-2"] },
+            { id: "series-12", folder: "UA_SAKAMOTO DAYS 坂本日常", name: "SAKAMOTO DAYS 坂本日常", desc: "", images: ["1", "2", "3"] },
+            { id: "series-13", folder: "UA_SHY", name: "SHY", desc: "", images: ["1", "2", "3"] },
+            { id: "series-14", folder: "UA_SYNDUALITY Noir", name: "SYNDUALITY Noir", desc: "", images: ["1", "2", "3"] },
+            { id: "series-15", folder: "UA_WIND BREAKER—防風少年—", name: "WIND BREAKER—防風少年—", desc: "", images: ["1", "2", "3"] },
+            { id: "series-16", folder: "UA_一拳超人", name: "一拳超人", desc: "", images: ["1", "2", "3"] },
+            { id: "series-17", folder: "UA_刀劍神域", name: "刀劍神域", desc: "", images: ["1-1", "1-2", "2-1", "2-2", "3-1", "3-2"] },
+            { id: "series-18", folder: "UA_大怪獸卡美拉", name: "大怪獸卡美拉", desc: "", images: ["1", "2", "3"] },
+            { id: "series-19", folder: "UA_不死不運", name: "不死不運", desc: "", images: ["1", "2", "3"] },
+            { id: "series-20", folder: "UA_天元突破 紅蓮螺巖", name: "天元突破 紅蓮螺巖", desc: "", images: ["1", "2", "3"] },
+            { id: "series-21", folder: "UA_犬夜叉", name: "犬夜叉", desc: "", images: ["1", "2", "3"] },
+            { id: "series-22", folder: "UA_王者天下", name: "王者天下", desc: "", images: ["1", "2", "3"] },
+            { id: "series-23", folder: "UA_出包王女 To Love", name: "出包王女 To Love", desc: "", images: ["1", "2", "3"] },
+            { id: "series-24", folder: "UA_我的英雄學院", name: "我的英雄學院", desc: "", images: ["1", "2", "3"] },
+            { id: "series-25", folder: "UA_我想成為影之強者！", name: "我想成為影之強者！", desc: "", images: ["1", "2", "3", "4"] },
+            { id: "series-26", folder: "UA_我與機器子", name: "我與機器子", desc: "", images: ["1", "2", "3"] },
+            { id: "series-27", folder: "UA_咒術廻戰", name: "咒術廻戰", desc: "", images: ["1", "2", "3"] },
+            { id: "series-28", folder: "UA_怪獸８號", name: "怪獸８號", desc: "", images: ["1", "2", "3"] },
+            { id: "series-29", folder: "UA_明日方舟", name: "明日方舟", desc: "", images: ["1", "2", "3"] },
+            { id: "series-30", folder: "UA_東京喰種", name: "東京喰種", desc: "", images: ["1", "2", "3"] },
+            { id: "series-31", folder: "UA_幽☆遊☆白書", name: "幽☆遊☆白書", desc: "", images: ["1", "2", "3"] },
+            { id: "series-32", folder: "UA_美食獵人", name: "美食獵人", desc: "", images: ["1", "2", "3"] },
+            { id: "series-33", folder: "UA_香格里拉·開拓異境", name: "香格里拉·開拓異境", desc: "", images: ["1", "2", "3"] },
+            { id: "series-34", folder: "UA_浪客劍心 ―明治劍客浪漫譚―", name: "浪客劍心 ―明治劍客浪漫譚―", desc: "", images: ["1", "2", "3"] },
+            { id: "series-35", folder: "UA_破曉傳奇 TOA", name: "破曉傳奇 TOA", desc: "", images: ["1", "2", "3"] },
+            { id: "series-36", folder: "UA_神樂鉢", name: "神樂鉢", desc: "", images: ["1", "2", "3"] },
+            { id: "series-37", folder: "UA_鬼滅之刃", name: "鬼滅之刃", desc: "", images: ["1", "2", "3"] },
+            { id: "series-38", folder: "UA_假面騎士", name: "假面騎士", desc: "", images: ["1", "2", "3"] },
+            { id: "series-39", folder: "UA_偶像大師 灰姑娘女孩", name: "偶像大師 灰姑娘女孩", desc: "", images: ["1", "2", "3"] },
+            { id: "series-40", folder: "UA_偶像大師閃耀色彩", name: "偶像大師閃耀色彩", desc: "", images: ["1", "2", "3"] },
+            { id: "series-41", folder: "UA_從零開始的異世界生活", name: "從零開始的異世界生活", desc: "", images: ["1", "2", "3"] },
+            { id: "series-42", folder: "UA_排球少年", name: "排球少年", desc: "", images: ["1", "2", "3"] },
+            { id: "series-43", folder: "UA_無職轉生", name: "無職轉生", desc: "", images: ["1", "2", "3", "4"] },
+            { id: "series-44", folder: "UA_超時空要塞", name: "超時空要塞", desc: "", images: ["1", "2", "3"] },
+            { id: "series-45", folder: "UA_超超超超超喜歡你的100個女朋友", name: "超超超超超喜歡你的100個女朋友", desc: "", images: ["1", "2", "3"] },
+            { id: "series-46", folder: "UA_進擊的巨人", name: "進擊的巨人", desc: "", images: ["1", "2", "3"] },
+            { id: "series-47", folder: "UA_黑色五葉草", name: "黑色五葉草", desc: "", images: ["1", "2", "3"] },
+            { id: "series-48", folder: "UA_銀魂", name: "銀魂", desc: "", images: ["1", "2", "3"] },
+            { id: "series-49", folder: "UA_學園偶像大師", name: "學園偶像大師", desc: "", images: ["1", "2", "3"] },
+            { id: "series-50", folder: "UA_鋼之錬金術師 FA", name: "鋼之錬金術師 FA", desc: "", images: ["1", "2", "3"] },
+            { id: "series-51", folder: "UA_鏈鋸人", name: "鏈鋸人", desc: "", images: ["1-1", "1-2", "2-1", "2-2", "3"] },
+            { id: "series-52", folder: "UA_關於我轉生變成史萊姆這檔事", name: "關於我轉生變成史萊姆這檔事", desc: "", images: ["1", "2", "3"] },
+            { id: "series-53", folder: "UA_鐵拳7", name: "鐵拳7", desc: "", images: ["1", "2", "3"] },
+            { id: "series-54", folder: "UA_魔法少女小圓", name: "魔法少女小圓", desc: "", images: ["1", "2", "3"] },
+            { id: "series-55", folder: "UA_魔都精兵的奴隸", name: "魔都精兵的奴隸", desc: "", images: ["1", "2", "3"] }
+        ];
+
+        /**
+         * 💡 多副檔名自動候補函數 (解決 .webp / .jpg / .png 的相容問題)
+         * @param {HTMLImageElement} imgElement - <img> 標籤元素
+         * @param {string} basePath - 不帶副檔名的基本路徑
+         */
+        function handleImageError(imgElement, basePath) {
+            const extensions = ['.webp', '.jpg', '.png', '.jpeg'];
+            let currentTryIdx = parseInt(imgElement.getAttribute('data-try-idx') || '0');
+
+            if (currentTryIdx < extensions.length) {
+                const nextSrc = basePath + extensions[currentTryIdx];
+                imgElement.setAttribute('data-try-idx', currentTryIdx + 1);
+                imgElement.src = nextSrc;
+            } else {
+                imgElement.src = 'UATier0/image.png'; 
+                imgElement.removeAttribute('data-try-idx');
+                imgElement.onerror = null; 
+            }
+        }
+
+        // 渲染系列卡片至網格
+        function initSeriesGrid() {
+            const grid = document.getElementById('series-grid');
+            let gridHTML = '';
+            
+            allSeriesList.forEach((series) => {
+                // 💡 修正：主畫面代表縮圖去除 "UA_" 前綴，直接讀取 `IP/系列名稱.webp`
+                const seriesCleanName = series.folder.replace(/^UA_/, ''); 
+                const basePath = `IP/${seriesCleanName}`; 
+                
+                gridHTML += `
+                    <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-md flex flex-col items-center">
+                        <img src="${basePath}.webp" 
+                             alt="${series.name}" 
+                             class="series-img mb-3 cursor-pointer" 
+                             data-try-idx="0"
+                             onclick="toggleDetails(this, '${series.id}')" 
+                             onerror="handleImageError(this, '${basePath}')">
+                        <span class="font-bold text-gray-700 text-center text-sm sm:text-base">${series.name}</span>
+                    </div>
+                `;
+            });
+            grid.innerHTML = gridHTML;
+        }
+
+        // 初始化渲染
+        initSeriesGrid();
+
+        let activePanelId = null;
+
+        /**
+         * 點擊展開面板函數
+         */
+        function toggleDetails(element, seriesId) {
+            const grid = document.getElementById('series-grid');
+            
+            // 1. 清除所有選取樣式
+            document.querySelectorAll('.series-img').forEach(img => {
+                img.classList.remove('selected');
+            });
+
+            // 2. 移除當前已打開的詳細面板
+            const existingPanel = document.getElementById('active-detail-panel');
+            if (existingPanel) {
+                existingPanel.remove();
+            }
+
+            // 【收回邏輯】如果重複點擊同一個系列，就直接收合
+            if (activePanelId === seriesId) {
+                activePanelId = null;
+                return;
+            }
+
+            // 3. 更新當前狀態
+            element.classList.add('selected');
+            activePanelId = seriesId;
+
+            // 4. 取得該系列的資料
+            const data = allSeriesList.find(item => item.id === seriesId);
+            if (!data) return;
+
+            // 5. 動態建立展開面板
+            const panel = document.createElement('div');
+            panel.id = 'active-detail-panel';
+            panel.className = 'detail-panel'; 
+            panel.style.display = 'block';
+
+            const deckImages = data.images || [];
+            // 預設第一張大展示圖路徑 (all_decks/系列名稱/1.webp)
+            const defaultMainPath = deckImages.length > 0 ? `all_decks/${data.folder}/${deckImages[0]}` : '';
+
+            // 6. 生成縮圖網格 (利用 series_thumbs/系列名稱/數字.webp)
+            let thumbGridHTML = '';
+            deckImages.forEach((imgNum) => {
+                const thumbPath = `series_thumbs/${data.folder}/${imgNum}`;
+                const deckFullPath = `all_decks/${data.folder}/${imgNum}`;
+
+                thumbGridHTML += `
+                    <div class="flex flex-col items-center">
+                        <img src="${thumbPath}.webp" 
+                             class="w-full aspect-[3/4] object-contain border border-gray-200 hover:border-red-500 rounded-lg shadow-sm cursor-pointer transition-all duration-200 p-1 bg-gray-50" 
+                             alt="${data.name} 縮圖 ${imgNum}" 
+                             data-try-idx="0"
+                             onclick="switchMainImage('${deckFullPath}')"
+                             onerror="handleImageError(this, '${thumbPath}')">
+                    </div>
+                `;
+            });
+
+            // 7. 組裝面板
+            panel.innerHTML = `
+                <div class="flex justify-between items-start mb-6 border-b border-gray-100 pb-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-red-600 mb-1">${data.name} 系列卡組推薦</h3>
+                        <p class="text-sm text-gray-600">${data.desc}</p>
+                    </div>
+                    <button onclick="closeDetails()" class="text-gray-400 hover:text-red-500 text-lg p-1 transition-colors">
+                        <i class="fa-solid fa-xmark"></i> 關閉
+                    </button>
+                </div>
+
+                <!-- 【上方區域】多欄縮圖區 (內部改用 series_thumbs/資料夾/數字) -->
+                <div class="grid grid-cols-3 sm:grid-cols-6 gap-4 max-w-4xl mx-auto mb-4">
+                    ${thumbGridHTML}
+                </div>
+
+                <!-- 【下方區域】大圖展示 (內部改用 all_decks/資料夾/數字) -->
+                <div class="flex flex-col items-center pt-3">
+                    <span class="text-[10px] text-gray-400 mb-1 tracking-wider uppercase font-semibold">當前展示卡組</span>
+                    <div class="bg-gray-50 p-2.5 rounded-2xl border border-gray-150 shadow-inner max-w-[300px] w-full">
+                        <img id="main-deck-display" 
+                             src="${defaultMainPath}.webp" 
+                             class="w-full aspect-[3/4] object-contain rounded-xl shadow-md" 
+                             alt="當前卡組展示"
+                             data-try-idx="0"
+                             onerror="handleImageError(this, '${defaultMainPath}')">
+                    </div>
+                </div>
+            `;
+
+            // 8. RWD 排版計算插入位置
+            const items = Array.from(grid.children);
+            const clickedIndex = items.indexOf(element.parentElement);
+            
+            let columns = 2; // 手機版
+            if (window.innerWidth >= 768) {
+                columns = 4; // 電腦
+            } else if (window.innerWidth >= 640) {
+                columns = 3; // 平板
+            }
+
+            const targetRowEndIndex = Math.min(
+                Math.ceil((clickedIndex + 1) / columns) * columns - 1, 
+                items.length - 1
+            );
+
+            // 9. 將面板插入正確的 Row 後方
+            grid.insertBefore(panel, items[targetRowEndIndex].nextSibling);
+
+            // 10. 平滑滾動
+            setTimeout(() => {
+                panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        }
+
+        /**
+         * 切換大圖
+         */
+        function switchMainImage(newBasePath) {
+            const mainDisplay = document.getElementById('main-deck-display');
+            if (mainDisplay) {
+                mainDisplay.setAttribute('data-try-idx', '0');
+                mainDisplay.src = newBasePath + '.webp';
+                
+                mainDisplay.onerror = function() {
+                    handleImageError(this, newBasePath);
+                };
+           }
+        }
+
+        /**
+         * 關閉面板
+         */
+        function closeDetails() {
+            const existingPanel = document.getElementById('active-detail-panel');
+            if (existingPanel) {
+                existingPanel.remove(); 
+            }
+            document.querySelectorAll('.series-img').forEach(img => {
+                img.classList.remove('selected');
+            });
+            activePanelId = null; 
+        }
+
+        /**
+         * 監聽瀏覽器 RWD 調整
+         */
+        window.onresize = () => {
+            if (activePanelId) {
+                const activeImg = document.querySelector('.series-img.selected');
+                if (activeImg) {
+                    const currentId = activePanelId;
+                    activePanelId = null; 
+                    toggleDetails(activeImg, currentId);
+                }
+            }
+        };
+    </script>
+</body>
+</html>
