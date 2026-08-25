@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Union Arena 香港 Tier List - 牌組強度分析</title>
+    <!-- 引入獨立 CSS 檔案（包含全域樣式、縮圖樣式與右下角浮水印等） -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Tailwind CSS (快速排版框架) 與 FontAwesome (社群媒體與系統圖標庫) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- 右下角浮水印圖層 -->
+    <div class="right-watermark"></div>
+
+    <!-- 選單導覽列 (Navbar) - 保持頂部固定 (sticky) -->
+    <nav class="bg-gray-900 text-white py-4 shadow-md sticky top-0 z-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 flex justify-between items-center">
+            <span class="font-bold text-lg text-red-500">UA CLUB</span>
+            <div class="flex gap-6">
+                <!-- 導覽連結：標示當前頁面（Tier List）並提供連往「全部系列」的連結 -->
+                <a href="index.html" class="font-semibold text-red-500 border-b-2 border-red-500 pb-1">Tier List</a>
+                <a href="series.html" class="font-semibold text-gray-300 hover:text-white transition pb-1">全部系列</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主內容容器 -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-5">
+        
+        <!-- Header 頂部資訊區 -->
+        <header class="text-center mb-5">
+            <!-- 雙 LOGO 展示區域 -->
+            <div class="flex justify-center mb-1">
+                <img src="UATier0/image.png" alt="Union Arena" class="w-full max-w-[130px] aspect-[3/3] object-cover border-4 border-white rounded-[12px]">
+                <img src="UATier0/maomaotcg.png" alt="Union Arena" class="w-full max-w-[130px] aspect-[3/3] object-cover border-4 border-white rounded-[12px]">
+            </div>
+            <!-- 主副標題 -->
+            <div class="mb-2">
+                <h1 class="text-5xl font-bold text-red-800">Union Arena</h1>
+                <h1 class="text-4xl font-bold text-gray-800">Hong Kong Tier List</h1>
+            </div>
+            <!-- 社群媒體連結按鈕（FB / IG / YouTube） -->
+            <div class="flex justify-center gap-6 text-3xl mb-5">
+                <a href="https://www.facebook.com/share/18wVEzaKn8/?mibextid=wwXIfr" target="_blank" class="text-blue-600 hover:text-blue-700">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/uaclub_007?igsh=MWFxdTRkbndtMzd5bg%3D%3D&utm_source=qr" target="_blank" class="text-pink-600 hover:text-pink-700">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://youtube.com/@uaclub-007?si=c4HiPlfyncc4sS9i" target="_blank" class="text-red-600 hover:text-red-700">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </header>
+
+        <!-- 強度篩選按鈕容器 (由 JavaScript 動態生成按鈕) -->
+        <div class="flex flex-wrap gap-3 justify-center mb-5" id="filter-buttons"></div>
+
+        <!-- 最後更新時間提示 -->
+        <div class="text-center mb-8">
+            <p class="text-gray-500">最後更新: <span id="update-date">02/07/2026</span></p>
+        </div>
+
+        <!-- Tier List 強度表主要卡片內容區 (由 JavaScript 動態生成與渲染) -->
+        <div id="tiers" class="space-y-12"></div>
+
+        <!-- 頁尾宣告 -->
+        <footer class="mt-16 py-8 text-center text-gray-500 border-t border-gray-200">
+            <p class="text-sm">版權所有人：U推 © 2026 All Rights Reserved</p>
+        </footer>
+    </div>
+
+    <!-- 前端互動 JavaScript 邏輯 -->
+    <script>
+        // 【資料庫】強度分級 (T0 ~ T4) 的數據結構，包含背景漸層色、描述、分析與卡牌縮圖陣列
+        const tiersData = [
+            { id: "T0",   name: "T0",   color: "from-purple-600 to-violet-700", desc: "環境霸主", analysis: "目前環境最強卡組，勝率極高，幾乎所有比賽都會遇到。", 
+                images: ["UATier0/1.PNG", "UATier0/2.PNG", "UATier0/3.jpeg"]
+            },
+            { id: "T1",   name: "T1",   color: "from-red-600 to-rose-600",     desc: "頂級強勢 • 主流最強", analysis: "現版本主流最強卡組，操作門檻適中。",
+                images: ["UATier1/1.png", "UATier1/2.jpeg", "UATier1/3.jpeg", "UATier1/4.jpeg"]
+             },
+            { id: "T1.5", name: "T1.5", color: "from-orange-500 to-amber-600", desc: "非常穩定 • 高勝率", analysis: "勝率穩定，後期強勢。" ,
+                images: [
+                    "UATier1.5/1.png", "UATier1.5/2.PNG", "UATier1.5/3.jpeg", "UATier1.5/4.png", "UATier1.5/5.jpeg",
+                    "UATier1.5/6.PNG", "UATier1.5/7.jpeg", "UATier1.5/8.PNG", "UATier1.5/9.webp", "UATier1.5/10.jpg",
+                    "UATier1.5/11.PNG", "UATier1.5/12.PNG", "UATier1.5/13.PNG", "UATier1.5/14.PNG", "UATier1.5/15.PNG",
+                    "UATier1.5/16.jpeg", "UATier1.5/17.jpeg", "UATier1.5/18.png", "UATier1.5/19.png", "UATier1.5/20.png",
+                    "UATier1.5/21.png"
+                ]
+            },
+            { id: "T2",   name: "T2",   color: "from-amber-500 to-yellow-600", desc: "進階選擇 • 潛力牌組", analysis: "有一定實力，需要熟悉操作。" ,
+                images: [
+                    "UATier2/1.webp", "UATier2/2.webp", "UATier2/3.webp", "UATier2/4.webp", "UATier2/5.webp",
+                    "UATier2/6.PNG", "UATier2/7.PNG", "UATier2/8.webp", "UATier2/9.webp", "UATier2/10.webp",
+                    "UATier2/11.webp", "UATier2/12.webp", "UATier2/13.webp", "UATier2/14.webp", "UATier2/15.PNG",
+                    "UATier2/16.png", "UATier2/17.png", "UATier2/18.png", "UATier2/19.PNG", "UATier2/20.PNG",
+                    "UATier2/22.webp", "UATier2/23.webp", "UATier2/24.webp", "UATier2/25.webp", "UATier2/26.png",
+                    "UATier2/27.png", "UATier2/28.PNG", "UATier2/29.PNG", "UATier2/30.PNG", "UATier2/31.PNG",
+                    "UATier2/32.PNG", "UATier2/33.webp", "UATier2/34.webp", "UATier2/35.webp", "UATier2/36.PNG",
+                    "UATier2/37.png", "UATier2/38.PNG", "UATier2/39.PNG", "UATier2/40.webp", "UATier2/41.webp",
+                    "UATier2/42.webp", "UATier2/43.webp", "UATier2/44.webp", "UATier2/45.png", "UATier2/46.PNG",
+                    "UATier2/47.PNG", "UATier2/48.png", "UATier2/49.png", "UATier2/50.png", "UATier2/51.png",
+                    "UATier2/52.png", "UATier2/53.png", "UATier2/54.png"
+                ]
+            },
+            { id: "T3",   name: "T3",   color: "from-cyan-500 to-blue-600",     desc: "中規中矩", analysis: "中規中矩的強度。" ,
+                 images: [
+                    "UATier3.1/1.webp", "UATier3.1/2.webp", "UATier3.1/3.webp", "UATier3.1/4.webp", "UATier3.1/5.webp",
+                    "UATier3.1/6.webp", "UATier3.1/7.webp", "UATier3.1/8.webp", "UATier3.1/9.webp", "UATier3.1/10.webp",
+                    "UATier3.1/11.webp", "UATier3.1/12.webp", "UATier3.1/13.webp", "UATier3.1/14.webp", "UATier3.1/15.webp",
+                    "UATier3.1/16.webp", "UATier3.1/17.webp", "UATier3.1/18.webp", "UATier3.1/19.webp", "UATier3.1/20.webp",
+                    "UATier3.1/21.webp", "UATier3.1/22.webp", "UATier3.1/23.webp", "UATier3.1/24.PNG", "UATier3.1/25.PNG",
+                    "UATier3.1/26.webp", "UATier3.1/27.webp", "UATier3.1/28.webp", "UATier3.1/29.webp", "UATier3.1/30.webp",
+                    "UATier3.1/31.webp", "UATier3.1/32.webp", "UATier3.1/33.webp", "UATier3.1/34.webp", "UATier3.1/35.webp",
+                    "UATier3.1/36.webp", "UATier3.1/37.webp", "UATier3.1/38.webp", "UATier3.1/39.webp", "UATier3.1/40.webp",
+                    "UATier3.1/41.webp", "UATier3.1/42.webp", "UATier3.1/43.png", "UATier3.1/44.webp", "UATier3.1/45.webp",
+                    "UATier3.1/46.webp", "UATier3.1/47.webp", "UATier3.1/48.webp", "UATier3.1/49.webp", "UATier3.1/50.png",
+                    "UATier3.1/51.webp", "UATier3.1/64.webp", "UATier3.1/65.webp", "UATier3.1/66.webp", "UATier3.1/67.webp",
+                    "UATier3.1/68.webp", "UATier3.1/69.webp", "UATier3.1/70.webp", "UATier3.1/71.webp", "UATier3.1/72.webp",
+                    "UATier3.1/73.webp", "UATier3.1/74.webp", "UATier3.1/75.webp", "UATier3.1/76.webp", "UATier3.1/77.webp",
+                    "UATier3.1/78.webp", "UATier3.1/79.webp", "UATier3.1/80.webp", "UATier3.1/81.webp", "UATier3.1/82.webp",
+                    "UATier3.1/83.webp", "UATier3.1/84.webp", "UATier3.1/85.webp", "UATier3.1/87.webp", "UATier3.1/88.webp",
+                    "UATier3.1/89.webp", "UATier3.1/90.webp","UATier3/91.webp", 
+                    "UATier3/91.webp", "UATier3/92.webp", "UATier3/93.webp","UATier3/94.webp", 
+                    "UATier3/95.webp", "UATier3/96.png", "UATier3/97.png", "UATier3/98.webp","UATier3/99.webp", 
+                    "UATier3/100.webp", "UATier3/101.webp", "UATier3/102.webp", "UATier3/103.webp","UATier3/104.webp", 
+                    "UATier3/105.webp", "UATier3/106.webp", "UATier3/107.webp", "UATier3/108.webp","UATier3/109.webp", 
+                    "UATier3/110.webp", "UATier3/111.webp", "UATier3/112.webp", "UATier3/113.webp","UATier3/114.webp",
+                    "UATier3/115.webp", "UATier3/116.webp", "UATier3/117.webp", "UATier3/118.png","UATier3/119.webp", 
+                    "UATier3/120.webp", "UATier3/121.webp", "UATier3/122.webp", "UATier3/123.webp","UATier3/124.webp", 
+                    "UATier3/125.webp", "UATier3/126.webp", "UATier3/127.webp", "UATier3/128.webp","UATier3/129.webp", 
+                    "UATier3/130.webp", "UATier3/131.png", "UATier3/132.png"
+                ]
+            },
+            { id: "T4",   name: "T4",   color: "from-indigo-600 to-blue-700",  desc: "需要特定環境", analysis: "在特定對局中表現出色。",
+                images: [
+                    "UATier4/1.webp", "UATier4/2.webp", "UATier4/3.webp", "UATier4/4.webp", "UATier4/5.webp",
+                    "UATier4/6.webp", "UATier4/7.webp", "UATier4/8.webp", "UATier4/9.webp", "UATier4/10.webp",
+                    "UATier4/11.webp", "UATier4/12.webp", "UATier4/13.webp", "UATier4/14.webp", "UATier4/15.webp",
+                    "UATier4/16.webp", "UATier4/17.webp", "UATier4/18.webp", "UATier4/19.webp", "UATier4/20.webp",
+                    "UATier4/21.webp", "UATier4/22.webp", "UATier4/23.webp", "UATier4/24.webp", "UATier4/25.webp",
+                    "UATier4/26.webp", "UATier4/27.webp", "UATier4/28.webp", "UATier4/29.webp", "UATier4/30.webp",
+                    "UATier4/31.webp", "UATier4/32.webp", "UATier4/33.webp", "UATier4/34.webp", "UATier4/35.webp",
+                    "UATier4/36.webp", "UATier4/37.webp", "UATier4/38.webp", "UATier4/39.webp", "UATier4/40.webp",
+                    "UATier4/41.webp", "UATier4/42.webp", "UATier4/43.webp", "UATier4/44.webp", "UATier4/45.webp",
+                    "UATier4/46.webp", "UATier4/47.webp", "UATier4/48.webp", "UATier4/49.webp", "UATier4/50.webp",
+                    "UATier4/51.webp", "UATier4/52.webp", "UATier4/53.webp", "UATier4/54.webp", "UATier4/55.webp",
+                    "UATier4/56.webp", "UATier4/57.webp", "UATier4/58.webp", "UATier4/59.webp", "UATier4/60.webp",
+                    "UATier4/61.webp", "UATier4/62.webp", "UATier4/63.webp", "UATier4/64.webp", "UATier4/65.webp",
+                    "UATier4/66.webp", "UATier4/67.webp", "UATier4/68.webp", "UATier4/69.webp", "UATier4/70.webp",
+                    "UATier4/71.webp", "UATier4/72.webp", "UATier4/74.webp", "UATier4/75.webp", "UATier4/76.webp",
+                    "UATier4/77.webp", "UATier4/78.webp", "UATier4/79.webp", "UATier4/80.webp", "UATier4/81.webp",
+                    "UATier4/82.webp", "UATier4/83.webp", "UATier4/84.webp", "UATier4/85.webp", "UATier4/86.webp",
+                    "UATier4/87.webp", "UATier4/88.webp", "UATier4/90.webp", "UATier4.1/91.webp", "UATier4.1/92.webp",
+                    "UATier4.1/93.webp", "UATier4.1/94.webp", "UATier4.1/95.webp", "UATier4.1/96.webp", "UATier4.1/97.webp",
+                    "UATier4.1/98.webp", "UATier4.1/99.webp", "UATier4.1/100.webp", "UATier4.1/101.webp", "UATier4.1/102.webp",
+                    "UATier4.1/103.webp", "UATier4.1/104.webp", "UATier4.1/105.webp", "UATier4.1/106.webp", "UATier4.1/107.webp",
+                    "UATier4.1/108.webp", "UATier4.1/109.webp", "UATier4.1/110.webp", "UATier4.1/111.webp", "UATier4.1/112.webp",
+                    "UATier4.1/113.webp", "UATier4.1/114.webp", "UATier4.1/115.webp", "UATier4.1/116.webp", "UATier4.1/117.webp",
+                    "UATier4.1/118.webp", "UATier4.1/119.webp", "UATier4.1/120.webp", "UATier4.1/121.webp", "UATier4.1/122.webp",
+                    "UATier4.1/123.webp", "UATier4.1/124.webp", "UATier4.1/125.webp", "UATier4.1/126.webp", "UATier4.1/127.webp",
+                    "UATier4.1/128.webp", "UATier4.1/129.webp", "UATier4.1/130.webp", "UATier4.1/131.webp", "UATier4.1/132.webp",
+                    "UATier4.1/133.webp", "UATier4.1/134.webp", "UATier4.1/135.webp", "UATier4.1/136.webp", "UATier4.1/137.webp",
+                    "UATier4.1/138.webp", "UATier4.1/139.webp", "UATier4.1/140.webp", "UATier4.1/141.webp", "UATier4.1/142.webp",
+                    "UATier4.1/143.webp", "UATier4.1/144.webp", "UATier4.1/145.webp", "UATier4.1/146.webp", "UATier4.1/147.webp",
+                    "UATier4.1/148.webp", "UATier4.1/149.webp", "UATier4.1/150.webp", "UATier4.1/151.webp", "UATier4.1/152.webp",
+                    "UATier4.1/153.webp", "UATier4.1/154.webp", "UATier4.1/155.webp", "UATier4.1/156.webp", "UATier4.1/157.webp",
+                    "UATier4.1/158.webp", "UATier4.1/159.webp", "UATier4.1/160.webp", "UATier4.1/161.webp", "UATier4.1/162.webp",
+                    "UATier4.1/163.webp", "UATier4.1/164.webp", "UATier4.1/165.webp", "UATier4.1/166.webp", "UATier4.1/167.webp",
+                    "UATier4.1/168.webp", "UATier4.1/169.webp", "UATier4.1/170.webp", "UATier4.1/171.webp", "UATier4.1/172.webp",
+                    "UATier4.1/173.webp", "UATier4.1/174.webp", "UATier4.1/175.webp", "UATier4.1/176.webp"
+                ]
+            },
+        ];
+
+        let currentFilter = "all"; // 用來紀錄目前的篩選狀態（預設為 "all" 全部顯示）
+
+        /**
+         * 動態建立篩選按鈕列
+         */
+        function createFilterButtons() {
+            const container = document.getElementById('filter-buttons');
+            // 初始化先置入「全部」按鈕，並預設為 active 啟用狀態
+            container.innerHTML = `
+                <button onclick="filterTiers('all')" 
+                        class="filter-btn active bg-red-600 text-white border border-red-600 flex items-center justify-center">
+                    全部
+                </button>
+            `;
+
+            // 依據資料庫（tiersData）為每個 Tier（例如 T0, T1...）動態新增對應按鈕
+            tiersData.forEach(tier => {
+                const btn = document.createElement('button');
+                // 預設樣式套用灰色框線與 hover 紅框過渡效果
+                btn.className = 'filter-btn border border-gray-300 hover:border-red-400 flex items-center justify-center';
+                btn.textContent = tier.name;
+                btn.onclick = () => filterTiers(tier.id);
+                container.appendChild(btn);
+            });
+        }
+
+        /**
+         * 圖片載入失敗後的備用替換邏輯（修正並優化版本）
+         */
+        function handleImageError(imgElement, basePath) {
+            // 定義要嘗試的候補副檔名（照順序：webp -> jpg -> jpeg -> png -> PNG）
+            const extensions = ['.webp', '.jpg', '.jpeg', '.png', '.PNG'];
+            
+            // 讀取當前正在嘗試的副檔名索引，若未設定則從 0 開始
+            let currentTryIdx = parseInt(imgElement.getAttribute('data-try-idx') || '0');
+
+            if (currentTryIdx < extensions.length) {
+                // 還沒試完所有格式，繼續嘗試下一個
+                const nextSrc = basePath + extensions[currentTryIdx];
+                imgElement.setAttribute('data-try-idx', currentTryIdx + 1);
+                imgElement.src = nextSrc;
+            } else {
+                // 所有格式都載不出來，載入通用預設圖
+                if (basePath.startsWith('IP/')) {
+                    imgElement.src = 'UATier0/image.png'; // 系列封面預設圖
+                } else {
+                    imgElement.src = 'UATier0/image.png'; // 推薦卡組預設圖
+                }
+                // 清除屬性並拔除 onerror 避免破圖時無限循環
+                imgElement.removeAttribute('data-try-idx');
+                imgElement.onerror = null; 
+            }
+        }
+
+        /**
+         * 篩選強度層級並重新著色按鈕狀態
+         * @param {string} filter - 欲篩選的 Tier ID（例如 'T0', 'T1' 或 'all'）
+         */
+        function filterTiers(filter) {
+            currentFilter = filter;
+            // 遍歷所有篩選按鈕，切換 Active（選中紅色）與 Normal（預設灰色）樣式
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                const isActive = (filter === 'all' && btn.textContent === '全部') || btn.textContent === filter;
+                if (isActive) {
+                    btn.classList.add('active', 'bg-red-600', 'text-white', 'border-red-600');
+                } else {
+                    btn.classList.remove('active', 'bg-red-600', 'text-white', 'border-red-600');
+                }
+            });
+            // 點擊後重新渲染強度表列表
+            renderTiers();
+        }
+
+        /**
+         * 建立單個 Tier 大區塊（例如 T0 大卡片區塊，內含頂部漸層標籤、卡片縮圖網格與強度分析）
+         * @param {Object} tier - 單筆 Tier 資料物件
+         */
+        function createTier(tier) {
+            const div = document.createElement('div');
+            div.className = 'rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-xl';
+            
+            // 1. 生成大區塊內的「卡片縮圖網格 HTML」
+            let cardsHTML = '';
+            const images = tier.images || [];
+            images.forEach(img => {
+                const src = typeof img === 'string' ? img : img.src;
+                const alt = typeof img === 'string' ? `${tier.name} card image` : img.alt;
+                
+                // 提取不含副檔名的路徑主檔名（例如："UATier1/1.png" -> "UATier1/1"）
+                const basePath = src.substring(0, src.lastIndexOf('.')) || src;
+
+                cardsHTML += `
+                    <div class="flex justify-center">
+                        <img src="${src}" 
+                             alt="${alt}" 
+                             class="tier-img"
+                             data-try-idx="0"
+                             onerror="handleImageError(this, '${basePath}')">
+                    </div>`;
+            });
+
+            // 2. 組裝區塊內部的整體 HTML（漸層頂部、RWD 網格系統、強度分析框）
+            // 網格設定：手機版 4 欄、平板 5~6 欄、電腦版 7~8 欄，因應大量圖片排版
+            div.innerHTML = `
+                <!-- 頂部漸層色標籤 -->
+                <div class="bg-gradient-to-r ${tier.color} px-8 py-6 text-white">
+                    <div class="flex items-center gap-6">
+                        <div class="text-5xl font-black">${tier.name}</div>
+                        <p class="text-2xl">${tier.desc}</p>
+                    </div>
+                </div>
+                <!-- 內容卡牌區與分析區 -->
+                <div class="p-8">
+                    <!-- RWD 響應式卡牌圖片網格 -->
+                    <div class="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-4">
+                        ${cardsHTML}
+                    </div>
+                    <!-- 強度分析欄位 -->
+                    <div class="mt-8 bg-gray-50 border border-gray-100 rounded-2xl p-6 text-gray-700">
+                        <strong class="text-red-600">強度分析：</strong> ${tier.analysis}
+                    </div>
+                </div>
+            `;
+            return div;
+        }
+
+        /**
+         * 執行渲染 Tier List 列表
+         */
+        function renderTiers() {
+            const container = document.getElementById('tiers');
+            container.innerHTML = ''; // 清空目前的容器
+
+            // 根據 currentFilter 過濾要顯示的資料（'all' 則全部保留，否則只篩出匹配 ID 的項目）
+            const filteredTiers = currentFilter === 'all' ? tiersData : tiersData.filter(t => t.id === currentFilter);
+            
+            // 循環將生成的 HTML 元素插入至主頁面容器中
+            filteredTiers.forEach(tier => container.appendChild(createTier(tier)));
+        }
+
+        // 當網頁載入完成後執行的初始化工作
+        window.onload = () => {
+            createFilterButtons(); // 1. 生成篩選按鈕
+            renderTiers();         // 2. 渲染 Tier List 資料
+            
+            // 3. 備註：若想讓更新時間完全由您寫死，可以直接把下面這行註解或刪除；
+            //    目前保留此行以實現載入時自動將「最後更新時間」更新為系統今日日期。
+            document.getElementById('update-date').textContent = 
+                new Date().toLocaleDateString('zh-HK', { year: 'numeric', month: '2-digit', day: '2-digit' });
+        };
+    </script>
+</body>
+</html>
