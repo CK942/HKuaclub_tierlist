@@ -76,38 +76,38 @@
     <!-- 前端互動 JavaScript 邏輯 -->
     <script>
         // 【資料庫】強度分級 (T0 ~ T4) 的數據結構，包含背景漸層色、描述、分析與卡牌縮圖陣列
-        const tiersData = [
-            { id: "-",   name: "待定",   color: "from-yellow-600 to-violet-700", desc: "-", analysis: "---", 
-                images: ["待定/1.PNG", "待定/2.PNG", "待定/3.PNG", "待定/4.PNG", "待定/5.PNG", "待定/6.PNG", "待定/7.PNG", "待定/8.PNG", "待定/9.PNG", "待定/10.PNG",
-                "待定/11.PNG", "待定/12.PNG", "待定/13.PNG", "待定/14.PNG", "待定/15.PNG", "待定/16.PNG",
+        //const tiersData = [
+            //{ id: "-",   name: "待定",   color: "from-yellow-600 to-violet-700", desc: "-", analysis: "---", 
+                //images: [
+                
                 ]
             },
             { id: "T0",   name: "T0",   color: "from-purple-600 to-violet-700", desc: "環境霸主", analysis: "目前環境最強卡組，勝率極高，幾乎所有比賽都會遇到。", 
                 images: ["UATier0/1.PNG", "UATier0/2.PNG", "UATier0/3.jpeg"]
             },
             { id: "T1",   name: "T1",   color: "from-red-600 to-rose-600",     desc: "頂級強勢 • 主流最強", analysis: "現版本主流最強卡組，操作門檻適中。",
-                images: ["UATier1/1.png", "UATier1/2.jpeg", "UATier1/3.jpeg", "UATier1/10.jpeg","UATier1/4.jpg",]
+                images: ["UATier1/1.png", "UATier1/2.jpeg", "UATier1/3.jpeg", "UATier1/10.jpeg","UATier1/4.jpg","待定/8.PNG"]
              },
             { id: "T1.5", name: "T1.5", color: "from-orange-500 to-amber-600", desc: "非常穩定 • 高勝率", analysis: "勝率穩定，後期強勢。" ,
                 images: [
-                    "UATier1.5/1.png", "UATier1.5/2.PNG", "UATier1.5/3.jpeg", "UATier1.5/4.png", "UATier1.5/5.jpeg",
+                    "待定/1.PNG","UATier1.5/1.png", "UATier1.5/2.PNG", "UATier1.5/3.jpeg", "UATier1.5/4.png", "UATier1.5/5.jpeg",
                     "UATier1.5/6.PNG", "UATier1.5/7.jpeg", "UATier1.5/8.PNG", "UATier1.5/9.webp", 
                     "UATier1.5/11.PNG", "UATier1.5/12.PNG", "UATier1.5/13.PNG", "UATier1.5/14.PNG", "UATier1.5/15.PNG",
                     "UATier1.5/16.jpeg", "UATier1.5/17.jpeg", "UATier1.5/18.png", "UATier1.5/19.png", "UATier1.5/20.png",
-                    "UATier1.5/21.png"
+                    "UATier1.5/21.png","待定/9.PNG", "待定/10.PNG"
                 ]
             },
             { id: "T2",   name: "T2",   color: "from-amber-500 to-yellow-600", desc: "進階選擇 • 潛力牌組", analysis: "有一定實力，需要熟悉操作。" ,
                 images: [
-                    "UATier2/1.webp", "UATier2/2.webp", "UATier2/3.webp", "UATier2/4.webp", "UATier2/5.webp",
+                    "待定/2.PNG", "待定/3.PNG", "待定/4.PNG","UATier2/1.webp", "UATier2/2.webp", "UATier2/3.webp", "UATier2/4.webp", "UATier2/5.webp",
                     "UATier2/6.PNG", "UATier2/7.PNG", "UATier2/8.webp", "UATier2/9.webp", "UATier2/10.webp",
                     "UATier2/11.webp", "UATier2/12.webp", "UATier2/13.webp", "UATier2/14.webp", "UATier2/15.PNG",
                     "UATier2/16.png", "UATier2/17.png", "UATier2/18.png", "UATier2/19.PNG", "UATier2/20.PNG",
-                    "UATier2/22.webp", "UATier2/23.webp", "UATier2/24.webp", "UATier2/25.webp", "UATier2/26.png",
+                    "待定/5.PNG", "待定/6.PNG", "待定/7.PNG","UATier2/22.webp", "UATier2/23.webp", "UATier2/24.webp", "UATier2/25.webp", "UATier2/26.png",
                     "UATier2/27.png", "UATier2/28.PNG", "UATier2/29.PNG", "UATier2/30.PNG", "UATier2/31.PNG",
                     "UATier2/32.PNG", "UATier2/33.webp", "UATier2/34.webp", "UATier2/35.webp", "UATier2/36.PNG",
                     "UATier2/37.png", "UATier2/38.PNG", "UATier2/39.PNG", "UATier2/40.webp", "UATier2/41.webp",
-                    "UATier2/42.webp", "UATier2/43.webp", "UATier2/44.webp", "UATier2/45.png", "UATier2/46.PNG",
+                    "UATier2/42.webp", "UATier2/43.webp", "UATier2/44.webp","待定/11.PNG","待定/12.PNG", "UATier2/45.png", "UATier2/46.PNG",
                     "UATier2/47.PNG", "UATier2/48.png", "UATier2/49.png", "UATier2/50.png", "UATier2/51.png",
                     "UATier2/52.png", "UATier2/53.png", "UATier2/54.png"
                 ]
@@ -138,7 +138,7 @@
                     "UATier3/115.webp", "UATier3/116.webp", "UATier3/117.webp", "UATier3/118.png","UATier3/119.webp", 
                     "UATier3/120.webp", "UATier3/121.webp", "UATier3/122.webp", "UATier3/123.webp","UATier3/124.webp", 
                     "UATier3/125.webp", "UATier3/126.webp", "UATier3/127.webp","UATier3/129.webp", 
-                    "UATier3/130.webp", "UATier3/131.png", "UATier3/132.png"
+                    "UATier3/130.webp", "UATier3/131.png", "UATier3/132.png","待定/13.PNG", "待定/14.PNG", "待定/15.PNG", "待定/16.PNG",
                 ]
             },
             { id: "T4",   name: "T4",   color: "from-indigo-600 to-blue-700",  desc: "需要特定環境", analysis: "在特定對局中表現出色。",
