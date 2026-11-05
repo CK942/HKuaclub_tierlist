@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Union Arena 香港 Tier List - 牌組強度分析</title>
+    <!-- 引入獨立 CSS 檔案 -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Tailwind CSS 與 FontAwesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .tier-card-wrapper {
+            position: relative;
+            cursor: pointer;
+        }
+        .tier-card-wrapper::after {
+            content: "\f00e";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.2s ease-in-out;
+            pointer-events: none;
+        }
+        .tier-card-wrapper:hover::after {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 min-h-screen">
+
+    <!-- 右下角浮水印圖層 -->
+    <div class="right-watermark"></div>
+
+    <!-- 選單導覽列 (Navbar) -->
+    <nav class="bg-gray-900 text-white py-4 shadow-md sticky top-0 z-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 flex justify-between items-center">
+            <span class="font-bold text-lg text-red-500">UA CLUB</span>
+            <div class="flex gap-6">
+                <a href="index.html" class="font-semibold text-red-500 border-b-2 border-red-500 pb-1">Tier List</a>
+                <a href="series.html" class="font-semibold text-gray-300 hover:text-white transition pb-1">全部系列</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主內容容器 -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 py-5">
+        
+        <!-- Header 頂部資訊區 -->
+        <header class="text-center mb-5">
+            <div class="flex justify-center gap-4 mb-3">
+                <img src="UATier0/image.png" alt="Union Arena Logo" class="w-full max-w-[130px] aspect-square object-cover border-4 border-white rounded-[12px] shadow-sm">
+                <img src="UATier0/maomaotcg.png" alt="MaoMao TCG Logo" class="w-full max-w-[130px] aspect-square object-cover border-4 border-white rounded-[12px] shadow-sm">
+            </div>
+            <div class="mb-3">
+                <h1 class="text-5xl font-bold text-red-800 tracking-tight">Union Arena</h1>
+                <h2 class="text-4xl font-bold text-gray-800 mt-1">Hong Kong Tier List</h2>
+            </div>
+            <div class="flex justify-center gap-6 text-3xl mb-5">
+                <a href="https://www.facebook.com/share/18wVEzaKn8/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700 transition" aria-label="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/uaclub_007?igsh=MWFxdTRkbndtMzd5bg%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="text-pink-600 hover:text-pink-700 transition" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://youtube.com/@uaclub-007?si=c4HiPlfyncc4sS9i" target="_blank" rel="noopener noreferrer" class="text-red-600 hover:text-red-700 transition" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </header>
+
+        <!-- 強度篩選按鈕容器 -->
+        <div class="flex flex-wrap gap-3 justify-center mb-5" id="filter-buttons"></div>
+
+        <!-- 最後更新時間提示 -->
+        <div class="text-center mb-8">
+            <p class="text-gray-500 text-sm">最後更新: <span id="update-date">2026/10/04</span></p>
+        </div>
+
+        <!-- Tier List 主內容區 -->
+        <div id="tiers" class="space-y-12"></div>
+
+        <!-- 頁尾宣告 -->
+        <footer class="mt-16 py-8 text-center text-gray-500 border-t border-gray-200">
+            <p class="text-sm">版權所有人：U推 © 2026 All Rights Reserved</p>
+        </footer>
+    </div>
+
+    <!-- Modal 燈箱大圖彈窗 -->
+    <div id="image-modal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300" onclick="closeModal(event)">
+        <div class="relative max-w-4xl max-h-[90vh] flex flex-col items-center" onclick="event.stopPropagation()">
+            <button onclick="closeModal()" class="absolute -top-10 right-0 text-white text-3xl font-bold hover:text-red-400 transition" aria-label="Close Modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <img id="modal-img" src="" alt="Detail View" class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl">
+            <p id="modal-caption" class="text-white mt-3 text-center text-sm font-medium bg-black/60 px-4 py-1.5 rounded-full"></p>
+        </div>
+    </div>
+
+    <!-- 1. 先載入獨立資料檔 -->
+    <script src="data.js"></script>
+
+    <!-- 2. 再執行前端渲染與互動 logic -->
+    <script>
+        let currentFilter = "all";
+
+        function createFilterButtons() {
+            const container = document.getElementById('filter-buttons');
+            container.innerHTML = `
+                <button onclick="filterTiers('all')" 
+                        class="filter-btn active bg-red-600 text-white border border-red-600 px-4 py-2 rounded-lg font-medium shadow-sm flex items-center justify-center transition">
+                    全部
+                </button>
+            `;
+
+            tiersData.forEach(tier => {
+                const btn = document.createElement('button');
+                btn.className = 'filter-btn border border-gray-300 hover:border-red-400 px-4 py-2 rounded-lg font-medium shadow-sm transition flex items-center justify-center';
+                btn.textContent = tier.name;
+                btn.onclick = () => filterTiers(tier.id);
+                container.appendChild(btn);
+            });
+        }
+
+        function handleImageError(imgElement, basePath) {
+            const extensions = ['.webp', '.jpg', '.jpeg', '.png', '.PNG'];
+            let currentTryIdx = parseInt(imgElement.getAttribute('data-try-idx') || '0');
+
+            if (currentTryIdx < extensions.length) {
+                const nextSrc = basePath + extensions[currentTryIdx];
+                imgElement.setAttribute('data-try-idx', currentTryIdx + 1);
+                imgElement.src = nextSrc;
+            } else {
+                imgElement.src = 'UATier0/image.png';
+                imgElement.removeAttribute('data-try-idx');
+                imgElement.onerror = null; 
+            }
+        }
+
+        function getNewSrc(src) {
+            const dotIdx = src.lastIndexOf('.');
+            if (dotIdx !== -1) {
+                return src.substring(0, dotIdx) + '_deck' + src.substring(dotIdx);
+            }
+            return src + '_deck';
+        }
+
+        function openModal(displaySrc, altText) {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-img');
+            const modalCaption = document.getElementById('modal-caption');
+            
+            modalImg.src = displaySrc;
+            modalImg.onerror = function() {
+                const fallbackSrc = displaySrc.replace('_deck.', '.');
+                if (modalImg.src !== fallbackSrc) {
+                    modalImg.src = fallbackSrc;
+                }
+            };
+            
+            modalCaption.textContent = altText || '卡牌詳情展示';
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(event) {
+            const modal = document.getElementById('image-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        function filterTiers(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                const isActive = (filter === 'all' && btn.textContent.trim() === '全部') || btn.textContent.trim() === filter;
+                if (isActive) {
+                    btn.classList.add('active', 'bg-red-600', 'text-white', 'border-red-600');
+                    btn.classList.remove('border-gray-300');
+                } else {
+                    btn.classList.remove('active', 'bg-red-600', 'text-white', 'border-red-600');
+                    btn.classList.add('border-gray-300');
+                }
+            });
+            renderTiers();
+        }
+
+        function createTier(tier) {
+            const div = document.createElement('div');
+            div.className = 'rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-xl';
+            
+            let cardsHTML = '';
+            const images = tier.images || [];
+            
+            images.forEach(img => {
+                let src, newSrc, alt;
+                if (typeof img === 'string') {
+                    src = img;
+                    newSrc = getNewSrc(img);
+                    alt = `${tier.name} 卡牌`;
+                } else {
+                    src = img.src;
+                    newSrc = img.newSrc || getNewSrc(img.src);
+                    alt = img.alt || `${tier.name} 卡牌`;
+                }
+
+                const basePath = src.substring(0, src.lastIndexOf('.')) || src;
+
+                cardsHTML += `
+                    <div class="flex justify-center tier-card-wrapper" onclick="openModal('${newSrc}', '${alt}')">
+                        <img src="${src}" 
+                             alt="${alt}" 
+                             class="tier-img w-full h-auto object-cover rounded-lg shadow-sm hover:scale-105 transition duration-200"
+                             data-try-idx="0"
+                             onerror="handleImageError(this, '${basePath}')">
+                    </div>`;
+            });
+
+            div.innerHTML = `
+                <div class="bg-gradient-to-r ${tier.color} px-8 py-6 text-white">
+                    <div class="flex items-center gap-6">
+                        <div class="text-5xl font-black tracking-wide">${tier.name}</div>
+                        <p class="text-2xl font-medium">${tier.desc}</p>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <div class="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-4">
+                        ${cardsHTML}
+                    </div>
+                    <div class="mt-8 bg-gray-50 border border-gray-100 rounded-2xl p-6 text-gray-700 leading-relaxed">
+                        <strong class="text-red-600 font-bold">強度分析：</strong> ${tier.analysis}
+                    </div>
+                </div>
+            `;
+            return div;
+        }
+
+        function renderTiers() {
+            const container = document.getElementById('tiers');
+            container.innerHTML = '';
+            const filteredTiers = currentFilter === 'all' ? tiersData : tiersData.filter(t => t.id === currentFilter);
+            filteredTiers.forEach(tier => container.appendChild(createTier(tier)));
+        }
+
+        window.onload = () => {
+            createFilterButtons();
+            renderTiers();
+        };
+    </script>
+</body>
+</html>
