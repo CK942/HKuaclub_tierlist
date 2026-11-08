@@ -20,8 +20,11 @@ const tiersData = [
             {
                 src: "UATier2/4.webp",
                 newSrc: "UATier2/4_deck.jpeg"
-            }, 
-            "UATier1/10.jpeg" // <-- 這裡上方已經補好了正確的逗號
+            },
+            {
+                src: "UATier1/10.jpeg",
+                newSrc: "UATier1/10_deck.jpeg"
+            },
         ]
     },
     { 
