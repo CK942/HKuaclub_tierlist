@@ -13,7 +13,8 @@ const tiersData = [
         images: [
             "待定/1.PNG", 
             "UATier1/5.PNG",
-            "UATier2/4.webp", 
+            "UATier2/4.webp",
+            "UATier2/4_deck.webp",
             "UATier1/10.jpeg"
         ]
     },
