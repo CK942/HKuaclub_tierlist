@@ -11,7 +11,6 @@ const tiersData = [
         desc: "頂級強勢 • 主流最強", 
         analysis: "現版本主流最強卡組，勝率極高，幾乎所有比賽都會遇到。",
         images: [
-            "待定/1.PNG",
             {
                 src: "待定/1.PNG",
                 newSrc: "待定/1_deck.jpeg"
