@@ -13,19 +13,19 @@ const tiersData = [
         images: [
             "待定/1.PNG", 
             "UATier1/5.PNG",
-            "UATier2/4.webp",
+            // 如果這張卡片需要指定不同副檔名的大圖，直接用物件格式即可：
             {
-            src: "UATier2/4.webp",
-            newSrc: "UATier2/4_deck.jpeg"
-            },
-            "UATier1/10.jpeg"
+                src: "UATier2/4.webp",
+                newSrc: "UATier2/4_deck.jpeg"
+            }, 
+            "UATier1/10.jpeg" // <-- 這裡上方已經補好了正確的逗號
         ]
     },
     { 
-        id: "T1.5", 
-        name: "T1.5", 
-        color: "from-orange-500 to-amber-600", 
-        desc: "非常穩定 • 高勝率", 
+        id: "T1.5",   
+        name: "T1.5",   
+        color: "from-orange-500 to-amber-600",   
+        desc: "非常穩定 • 高勝率",   
         analysis: "勝率穩定，後期強勢。",
         images: [
             "UATier0/1.PNG", "UATier1.5/JP1.png", "UATier1.5/JP2.png", "UATier1/1.png", "UATier1/2.jpeg", "待定/3.PNG", "UATier1.5/1.png", 
@@ -39,8 +39,8 @@ const tiersData = [
     { 
         id: "T2",   
         name: "T2",   
-        color: "from-amber-500 to-yellow-600", 
-        desc: "進階選擇 • 潛力牌組", 
+        color: "from-amber-500 to-yellow-600",   
+        desc: "進階選擇 • 潛力牌組",   
         analysis: "有一定實力，需要熟悉操作。",
         images: [
             "UATier4/17.webp", "UATier4/18.webp", "UATier4/19.webp",
@@ -62,7 +62,7 @@ const tiersData = [
         id: "T3",   
         name: "T3",   
         color: "from-cyan-500 to-blue-600",     
-        desc: "中規中矩", 
+        desc: "中規中矩",   
         analysis: "中規中矩的強度。",
         images: [
             "UATier3.1/1.webp", "UATier3.1/2.webp", "UATier3.1/3.webp", "UATier3.1/4.webp", "UATier3.1/5.webp",
@@ -96,7 +96,7 @@ const tiersData = [
         id: "T4",   
         name: "T4",   
         color: "from-indigo-600 to-blue-700",  
-        desc: "需要特定環境", 
+        desc: "需要特定環境",   
         analysis: "在特定對局中表現出色。",
         images: [
             "UATier4/1.webp", "UATier4/2.webp", "UATier4/3.webp", "UATier4/4.webp", "UATier4/5.webp",
