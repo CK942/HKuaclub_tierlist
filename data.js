@@ -17,7 +17,7 @@ const tiersData = [
             {
             src: "UATier2/4.webp",
             newSrc: "UATier2/4_deck.jpeg"
-            }
+            },
             "UATier1/10.jpeg"
         ]
     },
