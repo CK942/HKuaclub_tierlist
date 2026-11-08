@@ -12,7 +12,10 @@ const tiersData = [
         analysis: "現版本主流最強卡組，勝率極高，幾乎所有比賽都會遇到。",
         images: [
             "待定/1.PNG", 
-            "UATier1/5.PNG",
+            {
+                src: "UATier1/5.PNG",
+                newSrc: "UATier1/5_deck.jpeg"
+            }, 
             // 如果這張卡片需要指定不同副檔名的大圖，直接用物件格式即可：
             {
                 src: "UATier2/4.webp",
