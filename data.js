@@ -12,9 +12,17 @@ const tiersData = [
         analysis: "現版本主流最強卡組，勝率極高，幾乎所有比賽都會遇到。",
         images: [
             "待定/1.PNG", 
-            "UATier1/5.PNG",
-            "UATier2/4.webp",
-            "UATier2/4_deck.jpeg",
+            // 2. 如果大圖是不同格式（例如原圖是 .PNG，但大圖是 .webp）：
+            {
+                src: "UATier1/5.PNG",          // 網頁顯示的原縮圖
+                newSrc: "UATier1/5_deck.webp"  // 點擊後彈出指定的大圖格式 (.webp)
+            },
+
+            // 3. 如果大圖的副檔名是 .jpg：
+            {
+                src: "UATier2/4.webp",         // 原縮圖
+                newSrc: "UATier2/4_deck.jpeg"   // 點擊後彈出 .jpg 格式的大圖
+            }
             "UATier1/10.jpeg"
         ]
     },
