@@ -146,13 +146,18 @@
             }
         }
 
-        function getNewSrc(src) {
-            const dotIdx = src.lastIndexOf('.');
-            if (dotIdx !== -1) {
-                return src.substring(0, dotIdx) + '_deck' + src.substring(dotIdx);
-            }
-            return src + '_deck';
-        }
+function getNewSrc(src) {
+    const dotIdx = src.lastIndexOf('.');
+    if (dotIdx !== -1) {
+        const basePath = src.substring(0, dotIdx);
+        const ext = src.substring(dotIdx);
+        
+        // 這裡可以預設大圖一律使用 .webp（不管原圖是 .png 還是 .jpg）
+        // 這樣您只要確保大圖存成 _deck.webp 即可！
+        return basePath + '_deck.webp';
+    }
+    return src + '_deck.webp';
+}
 
         function openModal(displaySrc, altText) {
             const modal = document.getElementById('image-modal');
