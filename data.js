@@ -12,20 +12,20 @@ const tiersData = [
         analysis: "現版本主流最強卡組，勝率極高，幾乎所有比賽都會遇到。",
         images: [
             {
-                src: "待定/1.PNG",
+                src: "待定/1.PNG", //紫死神 一露
                 newSrc: "待定/1_deck.jpeg"
             },
             {
-                src: "UATier1/5.PNG",
+                src: "UATier1/5.PNG", //紫死神 戀露
                 newSrc: "UATier1/5_deck.jpeg"
             }, 
             // 如果這張卡片需要指定不同副檔名的大圖，直接用物件格式即可：
             {
-                src: "UATier2/4.webp",
+                src: "UATier2/4.webp", //紫Re0 Betty
                 newSrc: "UATier2/4_deck.jpeg"
             },
             {
-                src: "UATier1/10.jpeg",
+                src: "UATier1/10.jpeg", //紅天元 大哥
                 newSrc: "UATier1/10_deck.jpeg"
             },
         ]
@@ -38,38 +38,38 @@ const tiersData = [
         analysis: "勝率穩定，後期強勢。",
         images: [
             {
-                src: "UATier0/1.PNG",
+                src: "UATier0/1.PNG", //紫imas CoMETIK
                 newSrc: "UATier0/1_deck.jpeg"
             },
-            "UATier1.5/JP1.png",
-            "UATier1.5/JP2.png",
-            "UATier1/1.png",
-            "UATier1/2.jpeg",
-            "待定/3.PNG",
-            "UATier1.5/1.png", 
-            "UATier1.5/2.PNG",
-            "UATier1.5/3.jpeg",
-            "UATier1.5/4.png",
-            "UATier1.5/5.jpeg",
+            "UATier1.5/JP1.png", //紫我獨 暗影軍團
+            "UATier1.5/JP2.png", //紫我獨 惡魔城
+            "UATier1/1.png", //紫明日 陳兔
+            "UATier1/2.jpeg", //紫暗影 暗影大人
+            "待定/3.PNG", //紫死神 白戀
+            "UATier1.5/1.png", //紫SAO Yula
+            "UATier1.5/2.PNG", //紫EVA Wille
+            "UATier1.5/3.jpeg", //紫超時空 Walküre
+            "UATier1.5/4.png", //紫EVA 初號機
+            "UATier1.5/5.jpeg", //紫鏈鋸 蕾潔
             {
-                src: "UATier3.1/26.webp",
+                src: "UATier3.1/26.webp", //紫Re0 EMT
                 newSrc: "UATier3.1/26_deck.jpeg"
             },
-            "UATier1/3.jpeg",
-            "UATier0/2.PNG",
-            "UATier1.5/6.PNG",
-            "UATier1.5/7.jpeg",
-            "UATier1.5/8.PNG",
-            "UATier1.5/9.webp",
-            "UATier1.5/450.jpeg",
-            "UATier1.5/12.PNG",
-            "UATier1.5/13.PNG",
-            "UATier1.5/14.PNG", 
-            "UATier1.5/17.jpeg",
-            "UATier2/27.png",
-            "UATier3.1/76.webp",
-            "UATier1.5/16.jpeg",
-            "UATier3/96.png",
+            "UATier1/3.jpeg", //紅鏈鋸 6分鏈
+            "UATier0/2.PNG", //紅EVA 初號機
+            "UATier1.5/6.PNG", //紅劍心
+            "UATier1.5/7.jpeg", //紅犬夜叉
+            "UATier1.5/8.PNG", //紅灰姑娘 9姑娘
+            "UATier1.5/9.webp", //紅灰姑娘 New Gen.
+            "UATier1.5/450.jpeg", //黃小圓 54麻圓
+            "UATier1.5/12.PNG", //黃王者 汗明
+            "UATier1.5/13.PNG", //黃超時空 雪露
+            "UATier1.5/14.PNG", //黃NIKKE 灰姑娘
+            "UATier1.5/17.jpeg", //黃EVA
+            "UATier2/27.png", //黃小圓 457麻圓
+            "UATier3.1/76.webp", //黃小圓 圓神
+            "UATier1.5/16.jpeg", //黃坂本 全混
+            "UATier3/96.png", //黃Re0 拉蕾
             "UATier1.5/18.png",
             "UATier1.5/19.png",
             "UATier1.5/20.png",
