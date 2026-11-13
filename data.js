@@ -71,27 +71,27 @@ const tiersData = [
             "UATier1.5/16.jpeg", //黃坂本 全混
             "UATier3/96.png", //黃Re0 拉蕾
             {
-                src: "UATier3.1/82.webp",//黃Re0 EMT
+                src: "UATier3.1/82.webp", //黃Re0 EMT
                 newSrc: "UATier3.1/82_deck.jpeg"
             },
-            "UATier1.5/18.png",
-            "UATier1.5/19.png",
-            "UATier1.5/20.png",
-            "UATier1.5/21.png",
-            "待定/8.PNG",
-            "待定/12.PNG",
-            "UATier1.5/43.webp",
-            "UATier1/4.jpg",
+            "UATier1.5/18.png", //藍超時空 三角戀
+            "UATier1.5/19.png", //藍灰姑娘 扭蛋姬
+            "UATier1.5/20.png", //藍超時空 自爆機
+            "UATier1.5/21.png", //藍無職 師徒
+            "待定/8.PNG", //藍死神 一護
+            "待定/12.PNG", //藍死神 涅部隊
+            "UATier1.5/43.webp", //藍灰姑娘 LIPPS
+            "UATier1/4.jpg", //藍Roze 皇帝
             {
-                src: "UATier1.5/31.jpeg",
+                src: "UATier1.5/31.jpeg", //藍命石 助手
                 newSrc: "UATier1.5/31_deck.jpeg"
             },
-            "UATier1.5/32.jpeg",
-            "UATier2/38.PNG",
-            "待定/298.webp",
-            "UATier0/3.jpeg",
-            "UATier1.5/30.jpeg",
-            "UATier1.5/36.jpeg"
+            "UATier1.5/32.jpeg", //藍命石 嘟嘟嘟
+            "UATier2/38.PNG", //藍Re0 蕾姆
+            "待定/298.webp", //綠小圓 Magius
+            "UATier0/3.jpeg", //綠無職 迷宮
+            "UATier1.5/30.jpeg", //綠命石 打工戰士
+            "UATier1.5/36.jpeg" //綠Re0 EMT
         ]
     },
     { 
@@ -101,19 +101,19 @@ const tiersData = [
         desc: "進階選擇 • 潛力牌組",   
         analysis: "有一定實力，需要熟悉操作。",
         images: [
-            "UATier4/17.webp",
-            "UATier4/18.webp",
-            "UATier4/19.webp",
-            "待定/2.PNG",
-            "UATier2/1.webp",
-            "UATier2/2.webp",
-            "UATier2/3.webp",
-            "UATier2/5.webp",
-            "UATier2/6.PNG",
-            "UATier2/7.PNG",
-            "UATier2/8.webp",
-            "UATier2/9.webp",
-            "UATier2/10.webp",
+            "UATier4/17.webp", //紫小圓 惡魔焰
+            "UATier4/18.webp", //紫小圓 五重奏
+            "UATier4/19.webp", //紫小圓 小焰+巴麻美
+            "待定/2.PNG", //紫死神 零番隊
+            "UATier2/1.webp", //紫超時空 Delta小隊
+            "UATier2/2.webp", //紫坂本 大佛+神神迴
+            "UATier2/3.webp", //紫物語 忍野忍
+            "UATier2/5.webp", //紫鏈鋸 MKM
+            "UATier2/6.PNG", //紫喰種 月山
+            "UATier2/7.PNG", //紫劍心 牙突
+            "UATier2/8.webp", //紫幽遊 戶愚呂
+            "UATier2/9.webp", //紫幽遊 戶愚呂混軸
+            "UATier2/10.webp", //紫暗影 七影
             "UATier2/11.webp",
             "UATier2/12.webp",
             "UATier2/13.webp",
