@@ -146,18 +146,14 @@
             }
         }
 
-function getNewSrc(src) {
-    const dotIdx = src.lastIndexOf('.');
-    if (dotIdx !== -1) {
-        const basePath = src.substring(0, dotIdx);
-        const ext = src.substring(dotIdx);
-        
-        // 這裡可以預設大圖一律使用 .webp（不管原圖是 .png 還是 .jpg）
-        // 這樣您只要確保大圖存成 _deck.webp 即可！
-        return basePath + '_deck.webp';
-    }
-    return src + '_deck.webp';
-}
+        function getNewSrc(src) {
+            const dotIdx = src.lastIndexOf('.');
+            if (dotIdx !== -1) {
+                const basePath = src.substring(0, dotIdx);
+                return basePath + '_deck.webp';
+            }
+            return src + '_deck.webp';
+        }
 
         function openModal(displaySrc, altText) {
             const modal = document.getElementById('image-modal');
@@ -207,7 +203,6 @@ function getNewSrc(src) {
             div.className = 'rounded-3xl overflow-hidden border border-gray-100 bg-white shadow-xl';
             
             let cardsHTML = '';
-            <img src="${src}" loading="lazy" ...>
             const images = tier.images || [];
             
             images.forEach(img => {
@@ -228,6 +223,7 @@ function getNewSrc(src) {
                     <div class="flex justify-center tier-card-wrapper" onclick="openModal('${newSrc}', '${alt}')">
                         <img src="${src}" 
                              alt="${alt}" 
+                             loading="lazy"
                              class="tier-img w-full h-auto object-cover rounded-lg shadow-sm hover:scale-105 transition duration-200"
                              data-try-idx="0"
                              onerror="handleImageError(this, '${basePath}')">
