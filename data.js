@@ -70,6 +70,10 @@ const tiersData = [
             "UATier3.1/76.webp", //黃小圓 圓神
             "UATier1.5/16.jpeg", //黃坂本 全混
             "UATier3/96.png", //黃Re0 拉蕾
+            {
+                src: "UATier3.1/82.webp",//黃Re0 EMT
+                newSrc: "UATier3.1/82_deck.jpeg"
+            },
             "UATier1.5/18.png",
             "UATier1.5/19.png",
             "UATier1.5/20.png",
@@ -141,10 +145,6 @@ const tiersData = [
             "UATier2/35.webp",
             "UATier1.5/15.PNG",
             "UATier3.1/77.webp",
-            {
-                src: "UATier3.1/82.webp",
-                newSrc: "UATier3.1/82_deck.jpeg"
-            },
             "UATier2/64.PNG",
             "UATier2/36.PNG",
             "UATier2/37.png",
