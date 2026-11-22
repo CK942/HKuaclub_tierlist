@@ -55,6 +55,7 @@ const tiersData = [
                 src: "UATier3.1/26.webp", //紫Re0 EMT
                 newSrc: "UATier3.1/26_deck.jpeg"
             },
+            "UATier1.5/47.PNG", //紫D.Gray man 挪亞一族
             "UATier1/3.jpeg", //紅鏈鋸 6分鏈
             "UATier0/2.PNG", //紅EVA 初號機
             "UATier1.5/6.PNG", //紅劍心
@@ -88,6 +89,7 @@ const tiersData = [
             },
             "UATier1.5/32.jpeg", //藍命石 嘟嘟嘟
             "UATier2/38.PNG", //藍Re0 蕾姆
+            "UATier1.5/44.PNG", //藍D.Gray man 男主
             "待定/298.webp", //綠小圓 Magius
             "UATier0/3.jpeg", //綠無職 迷宮
             "UATier1.5/30.jpeg", //綠命石 打工戰士
