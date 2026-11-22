@@ -99,7 +99,7 @@ const tiersData = [
             "待定/298.webp", //綠小圓 Magius
             "UATier0/3.jpeg", //綠無職 迷宮
             "UATier1.5/30.jpeg", //綠命石 打工戰士
-            "UATier1.5/36.jpeg" //綠Re0 EMT
+            "UATier1.5/36.jpeg", //綠Re0 EMT
             "UATier1.5/48.png" //綠物語 忍野扇+老倉
         ]
     },
@@ -184,7 +184,7 @@ const tiersData = [
             "UATier2/JP3.png", //綠我獨 車hunter
             "UATier2/JP4.png", //綠我獨 日本hunter
             "UATier2/60.jpeg", //綠命石 D.mail
-            "UATier2/62.PNG" //綠Re0 陽劍
+            "UATier2/62.PNG", //綠Re0 陽劍
             "UATier2/72.png" //綠物語 123EN
         ]
     },
@@ -280,7 +280,6 @@ const tiersData = [
             "UATier3/107.webp",
             "UATier3/108.webp",
             "UATier3/110.webp", 
-            "UATier3/110.webp",
             "UATier3/111.webp",
             "UATier3/112.webp",
             "UATier3/113.webp",
