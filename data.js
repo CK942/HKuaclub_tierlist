@@ -207,7 +207,7 @@ const tiersData = [
             "UATier3/110.webp", "UATier3/111.webp", "UATier3/112.webp", "UATier3/113.webp", "UATier3/114.webp",
             "UATier3/115.webp", "UATier3/116.webp", "UATier3/117.webp", "UATier3/118.png", "UATier3/119.webp", 
             "UATier3/120.webp", "UATier3/121.webp", "UATier3/122.webp", "UATier3/123.webp", "UATier3/124.webp", 
-            "UATier3/125.webp", "UATier3/126.webp", "UATier3.1/127.webp", "UATier3/129.webp", 
+            "UATier3/125.webp", "UATier3/126.webp", "UATier3/127.webp", "UATier3/129.webp", 
             "UATier3/130.webp", "UATier3/131.png", "UATier3/132.png", "UATier3/JP5.png"
         ]
     },
