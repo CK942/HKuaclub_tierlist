@@ -195,33 +195,33 @@ const tiersData = [
         desc: "中規中矩",   
         analysis: "中規中矩的強度。",
         images: [
-            "UATier3.1/1.webp",
-            "UATier3.1/2.webp",
-            "UATier3.1/3.webp",
-            "UATier3.1/4.webp",
-            "UATier3.1/5.webp",
-            "UATier3.1/6.webp",
-            "UATier3.1/7.webp",
-            "UATier3.1/10.webp",
-            "UATier3.1/11.webp",
-            "UATier3.1/12.webp",
-            "UATier3.1/13.webp",
-            "UATier3.1/14.webp",
-            "UATier3.1/15.webp",
-            "UATier3.1/16.webp",
-            "UATier3.1/17.webp",
-            "UATier3.1/18.webp",
-            "UATier3.1/19.webp",
-            "UATier3.1/20.webp",
-            "UATier3.1/21.webp",
-            "UATier3.1/22.webp",
-            "UATier3.1/23.webp",
-            "UATier3.1/24.PNG",
-            "UATier3.1/25.PNG",
-            "UATier3.1/27.webp",
-            "UATier3.1/28.webp",
-            "UATier3.1/29.webp",
-            "UATier3.1/30.webp",
+            "UATier3.1/1.webp", //紫咒術 東堂
+            "UATier3.1/2.webp", //紫魯魯修
+            "UATier3.1/3.webp", //紫鬼滅 鬼王
+            "UATier3.1/4.webp", //紫我英 柄+Lady
+            "UATier3.1/5.webp", //紫我英 翻修+渡我
+            "UATier3.1/6.webp", //紫銀魂 白夜叉+桂小
+            "UATier3.1/7.webp", //紫銀魂 白夜叉+高杉
+            "UATier3.1/10.webp", //紫黑五 三極性
+            "UATier3.1/11.webp", //紫我英 翻修+Lady
+            "UATier3.1/12.webp", //紫不死不運 風子+Andy
+            "UATier3.1/13.webp", //紫SAO 亞絲娜
+            "UATier3.1/14.webp", //紫史 紫苑+史
+            "UATier3.1/15.webp", //紫史 日向
+            "UATier3.1/16.webp", //紫史 紫苑+史+日向
+            "UATier3.1/17.webp", //紫坂本 Labo
+            "UATier3.1/18.webp", //紫坂本 南雲+坂本
+            "UATier3.1/19.webp", //紫EVA 13號機
+            "UATier3.1/20.webp", //紫喰種 12金木
+            "UATier3.1/21.webp", //紫喰種 金木+董香
+            "UATier3.1/22.webp", //紫神樂 居合白禊流
+            "UATier3.1/23.webp", //紫NIKKE 女神部隊
+            "UATier3.1/24.PNG", //紫imas 摩美美+三峰+白瀨+戀鍾+霧子
+            "UATier3.1/25.PNG", //紫神樂 拍賣會
+            "UATier3.1/27.webp", //紫劍心 志志雄
+            "UATier3.1/28.webp", //紫筋肉人 黑洞人
+            "UATier3.1/29.webp", //紫鋼錬 大總統
+            "UATier3.1/30.webp", //紫犬夜叉 殺生丸
             "UATier3.1/31.webp",
             "UATier3.1/32.webp",
             "UATier3.1/33.webp",
