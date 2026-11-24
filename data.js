@@ -43,11 +43,11 @@ const tiersData = [
             },
             {
                 src: "UATier1.5/JP1.png", //紫我獨 暗影軍團
-                newSrc: "UATier1.5/JP1_deck.png"
+                newSrc: "UATier1.5/JP2_deck.png"
             },
             {
                 src: "UATier1.5/JP2.png", //紫我獨 惡魔城
-                newSrc: "UATier1.5/JP2_deck.png"
+                newSrc: "UATier1.5/JP1_deck.png"
             },
             "UATier1/1.png", //紫明日 陳兔
             "UATier1/2.jpeg", //紫暗影 暗影大人
