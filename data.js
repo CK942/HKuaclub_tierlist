@@ -41,8 +41,14 @@ const tiersData = [
                 src: "UATier0/1.PNG", //紫imas CoMETIK
                 newSrc: "UATier0/1_deck.jpeg"
             },
-            "UATier1.5/JP1.png", //紫我獨 暗影軍團
-            "UATier1.5/JP2.png", //紫我獨 惡魔城
+            {
+                src: "UATier1.5/JP1.png", //紫我獨 暗影軍團
+                newSrc: "UATier1.5/JP1_deck.png"
+            },
+            {
+                src: "UATier1.5/JP2.png", //紫我獨 惡魔城
+                newSrc: "UATier1.5/JP2_deck.png"
+            },
             "UATier1/1.png", //紫明日 陳兔
             "UATier1/2.jpeg", //紫暗影 暗影大人
             "待定/3.PNG", //紫死神 白戀
